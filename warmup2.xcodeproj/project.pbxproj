@@ -35,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		860115E719DF609E00300A16 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8654913819D7DF89005248CE /* LogoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoutViewController.h; sourceTree = "<group>"; };
 		8654913919D7DF89005248CE /* LogoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoutViewController.m; sourceTree = "<group>"; };
 		86EF9F9C19D76D7F00D7131A /* warmup2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = warmup2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +105,7 @@
 		86EF9F9E19D76D7F00D7131A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				860115E719DF609E00300A16 /* Security.framework */,
 				86EF9F9F19D76D7F00D7131A /* Foundation.framework */,
 				86EF9FA119D76D7F00D7131A /* CoreGraphics.framework */,
 				86EF9FA319D76D7F00D7131A /* UIKit.framework */,

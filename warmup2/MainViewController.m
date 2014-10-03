@@ -53,6 +53,8 @@ NSInteger errorCode;
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.png"]]];
     _messageText.text = DEFAULT;
+    _usernameText.tag = 1;
+    _passwordText.tag = 2;
 }
 
 - (void)didReceiveMemoryWarning
@@ -133,9 +135,6 @@ NSInteger errorCode;
             NSLog(@"Error parsing JSON: %@", error);
             _messageText.text = SERVER_ERROR;
         } else {
-//            for(NSString *key in [jsonResponse allKeys]) {
-//                NSLog(@"%@: %@", key, [jsonResponse objectForKey:key]);
-//            }
             errorCode = [[jsonResponse objectForKey:@"errCode"] intValue];
             loginCount = [[jsonResponse objectForKey:@"count"] intValue];
             if (errorCode < 0) {
@@ -166,6 +165,37 @@ NSInteger errorCode;
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];
+}
+
+- (Boolean)checkLength: (NSString *)text {
+    if ([text length] > 128) {
+        return false;
+    }
+    return true;
+}
+
+// for client-side validation
+- (IBAction)textFieldDidEnd:(id)sender {
+    if ([sender isEqual: _usernameText]){
+        NSLog(@"checking username");
+        if ([_usernameText.text length] == 0) {
+            _messageText.text = ERR_BAD_USERNAME;
+            return;
+        }
+        if (![self checkLength:_usernameText.text]) {
+            _messageText.text = ERR_BAD_USERNAME;
+            return;
+        }
+        _messageText.text = DEFAULT;
+    }
+    if ([sender isEqual: _passwordText]) {
+        NSLog(@"checking password");
+        if (![self checkLength:_passwordText.text]) {
+            _messageText.text = ERR_BAD_PASSWORD;
+            return;
+        }
+        _messageText.text = DEFAULT;
+    }
 }
 
 @end
